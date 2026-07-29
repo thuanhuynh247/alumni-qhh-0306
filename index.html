@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng ký Alumni · Hội Khóa Quốc Học 2003–2006</title>
+<meta name="description" content="Đăng ký thông tin thành viên Alumni Quốc Học Huế khóa 2003–2006 — Kết nối hôm nay, đồng hành ngày mai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ================= THEME TOKENS — lấy từ trang Âm Vang Ngày Về ================= */
+:root{
+  --green:#006838;--green-deep:#04351f;--green-night:#052a1b;--green-black:#03130c;
+  --red:#be1e2d;--red-soft:#e0424f;
+  --gold:#c8a24b;--gold-soft:#ecd499;--gold-bright:#f3e2b0;
+  --cream:#f6efdd;--muted:#9db39f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Be Vietnam Pro',system-ui,sans-serif;color:var(--cream);
+  background:radial-gradient(130% 80% at 50% -6%, #0a5232 0%, var(--green-deep) 30%, var(--green-night) 56%, var(--green-black) 100%);
+  background-attachment:fixed;min-height:100vh;padding-bottom:48px;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input,select{font-family:inherit}
+a{color:inherit}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
+}
+
+/* dust texture — đồng bộ với trang chính */
+.dust{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.55;
+  background-image:radial-gradient(rgba(236,212,153,.09) 1px, transparent 1.4px);background-size:17px 17px}
+.wrap{position:relative;z-index:2;max-width:760px;margin:0 auto;padding:0 16px}
+
+/* ================= HEADER ================= */
+header.hero{text-align:center;padding:56px 8px 12px}
+.badge-plate{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;
+  border-radius:50%;background:linear-gradient(160deg,#fffdf7,#f1e5c9);
+  box-shadow:0 0 0 1px rgba(236,212,153,.55),0 14px 38px rgba(0,0,0,.42);margin-bottom:18px;
+  font-family:'Playfair Display',serif;font-weight:700;font-size:15px;color:var(--green-deep);
+  line-height:1.15;text-align:center}
+.kicker{font-family:'Playfair Display',serif;letter-spacing:.32em;font-size:clamp(10px,1.4vw,12px);
+  text-transform:uppercase;color:var(--gold-soft);margin-bottom:10px;
+  opacity:0;transform:translateY(12px);animation:reveal .8s cubic-bezier(.16,1,.3,1) .1s forwards}
+.kicker .d{color:var(--red-soft)}
+h1.title{font-family:'Playfair Display',serif;font-weight:700;line-height:1.08;
+  font-size:clamp(30px,6.4vw,54px);color:var(--gold-bright);max-width:16ch;margin:0 auto;
+  text-shadow:0 3px 0 rgba(190,30,45,.35),0 12px 34px rgba(0,0,0,.5);
+  opacity:0;transform:translateY(18px);animation:reveal .9s cubic-bezier(.16,1,.3,1) .25s forwards}
+.sub{margin-top:14px;font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(14px,2.1vw,18px);color:var(--cream);opacity:0;max-width:38ch;margin-left:auto;margin-right:auto;
+  transform:translateY(14px);animation:reveal .8s cubic-bezier(.16,1,.3,1) .5s forwards}
+.stamp{margin-top:18px;display:inline-block;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-soft);border:1px dashed rgba(200,162,75,.45);border-radius:999px;padding:8px 20px;
+  opacity:0;transform:translateY(10px);animation:reveal .8s cubic-bezier(.16,1,.3,1) .7s forwards}
+@keyframes reveal{to{opacity:1;transform:translateY(0)}}
+.hero-cta{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+  opacity:0;transform:translateY(10px);animation:reveal .8s cubic-bezier(.16,1,.3,1) .85s forwards}
+
+/* ================= BUTTONS ================= */
+.btn{font-family:'Be Vietnam Pro';font-weight:700;font-size:14px;cursor:pointer;border:none;border-radius:999px;
+  padding:14px 26px;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:transform .18s ease,box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn:disabled{opacity:.6;cursor:default;transform:none}
+.btn-red{background:linear-gradient(135deg,var(--red),#8f1420);box-shadow:0 10px 26px rgba(190,30,45,.4)}
+.btn-green{background:linear-gradient(135deg,var(--green),#014a27);box-shadow:0 10px 26px rgba(0,104,56,.45)}
+.btn-ghost{background:rgba(255,255,255,.05);border:1px solid rgba(236,212,153,.3);color:var(--cream)}
+
+/* ================= SECTIONS ================= */
+section{margin-top:52px;position:relative;z-index:2}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.sec-head .ico{font-size:24px;line-height:1}
+.sec-head h2{font-family:'Be Vietnam Pro';font-weight:800;text-transform:uppercase;letter-spacing:.04em;
+  font-size:clamp(16px,2.4vw,21px);color:var(--gold-bright)}
+.sec-head .rule{flex:1;height:1px;background:linear-gradient(90deg,rgba(200,162,75,.55),transparent)}
+.sec-note{color:var(--muted);font-size:13.5px;margin-bottom:20px;line-height:1.6}
+
+/* mission cards */
+.mission-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(max-width:560px){.mission-grid{grid-template-columns:1fr}}
+.mission-card{background:linear-gradient(165deg,rgba(10,82,52,.35),rgba(4,22,14,.55));
+  border:1px solid rgba(200,162,75,.25);border-radius:16px;padding:20px 20px;
+  opacity:0;transform:translateY(20px);
+  transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),border-color .3s}
+.mission-card.in-view{opacity:1;transform:translateY(0)}
+.mission-card:hover{border-color:var(--gold)}
+.mission-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold-soft)}
+.mission-card h3{font-size:15px;font-weight:700;margin-top:8px;color:var(--gold-bright)}
+.mission-card p{margin-top:6px;font-size:13px;color:var(--muted);line-height:1.55}
+
+/* ================= FORM PANEL ================= */
+.panel{background:linear-gradient(165deg,rgba(10,82,52,.55),rgba(4,22,14,.75));
+  border:1px solid rgba(200,162,75,.3);border-radius:22px;padding:clamp(22px,5vw,42px);
+  box-shadow:0 18px 44px rgba(0,0,0,.4);position:relative;overflow:hidden}
+.panel::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-bright))}
+.form-header h2{font-family:'Playfair Display',serif;font-weight:700;
+  font-size:clamp(20px,3.4vw,26px);color:var(--gold-bright)}
+.form-header p{margin-top:8px;color:var(--muted);font-size:13.5px;line-height:1.6}
+
+/* progress */
+.progress-track{margin:26px 0 30px}
+.progress-bar-bg{height:5px;background:rgba(255,255,255,.08);border-radius:100px;overflow:hidden}
+.progress-bar-fill{height:100%;width:20%;background:linear-gradient(90deg,var(--gold),var(--gold-bright));
+  border-radius:100px;transition:width .5s cubic-bezier(.16,1,.3,1)}
+.progress-steps{display:flex;justify-content:space-between;margin-top:10px;
+  font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.progress-steps span{transition:color .3s}
+.progress-steps span.active{color:var(--gold-bright)}
+.progress-steps span.done{color:var(--gold-soft)}
+
+/* step panels */
+.step-panel{display:none}
+.step-panel.active{display:block;animation:slideIn .5s cubic-bezier(.16,1,.3,1)}
+@keyframes slideIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:translateX(0)}}
+
+.field{margin-bottom:20px}
+.field label{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-soft);margin-bottom:8px;font-weight:600}
+.field .hint{font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);font-size:12px}
+.field input[type="text"],.field input[type="tel"],.field input[type="url"],.field select{
+  width:100%;padding:13px 15px;border-radius:11px;font-size:15px;font-family:'Be Vietnam Pro';
+  color:var(--cream);background:rgba(255,255,255,.05);border:1px solid rgba(200,162,75,.3);
+  outline:none;transition:border-color .25s,background .25s}
+.field input::placeholder{color:#7f9583}
+.field input:focus,.field select:focus{border-color:var(--gold);background:rgba(255,255,255,.08)}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ecd499' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:18px;padding-right:44px}
+.field select option{background:#0b2c1c;color:var(--cream)}
+.error-msg{color:var(--red-soft);font-size:12px;margin-top:6px;display:none;font-weight:600}
+.field.invalid input,.field.invalid select{border-color:var(--red-soft)}
+.field.invalid .error-msg{display:block}
+
+/* chips */
+.chip-grid{display:flex;flex-wrap:wrap;gap:10px}
+.chip{padding:10px 18px;border-radius:100px;border:1px solid rgba(200,162,75,.3);
+  background:rgba(255,255,255,.05);font-size:13.5px;font-weight:600;color:var(--cream);
+  transition:all .25s cubic-bezier(.16,1,.3,1)}
+.chip:hover{border-color:var(--gold)}
+.chip.selected{background:linear-gradient(135deg,var(--gold-soft),var(--gold));
+  border-color:var(--gold);color:#123b06;transform:scale(1.04)}
+
+/* nav buttons */
+.step-nav{display:flex;justify-content:space-between;align-items:center;margin-top:32px;gap:12px}
+.step-nav .spacer{flex:1}
+
+/* review */
+.review-list{border-top:1px solid rgba(200,162,75,.2)}
+.review-row{display:flex;justify-content:space-between;gap:16px;padding:13px 0;
+  border-bottom:1px solid rgba(200,162,75,.2)}
+.review-row dt{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;min-width:38%}
+.review-row dd{font-size:14px;color:var(--gold-bright);font-weight:600;text-align:right}
+
+/* success */
+.success-panel{display:none;text-align:center;padding:14px 0 4px}
+.success-panel.active{display:block}
+.success-panel .fly{font-size:56px;display:block;animation:flyaway 1.4s ease-out}
+@keyframes flyaway{0%{transform:translateY(28px) rotate(-14deg);opacity:0}
+  55%{transform:translateY(-6px) rotate(4deg);opacity:1}100%{transform:none;opacity:1}}
+.success-panel h3{font-family:'Playfair Display',serif;font-weight:700;font-size:24px;
+  color:var(--gold-bright);margin:16px 0 8px}
+.success-panel p{color:var(--muted);font-size:14px;line-height:1.7;max-width:36ch;margin:0 auto}
+
+/* required */
+.required-star{color:var(--red-soft)}
+
+/* footer */
+footer{margin-top:56px;text-align:center;color:var(--muted);font-size:12.5px;line-height:1.8;position:relative;z-index:2}
+footer .ev{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold-bright);font-size:16px}
+
+@media(max-width:480px){
+  .review-row{flex-direction:column;text-align:left}
+  .review-row dd{text-align:left}
+  .step-nav{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+<div class="dust"></div>
+<div class="wrap">
+
+  <!-- ================= HEADER ================= -->
+  <header class="hero">
+    <div class="badge-plate">QH<br>03–06</div>
+    <div class="kicker">Khóa Cực học sinh Quốc Học Huế 2003 — 2006 <span class="d">◆</span> Chuyên Quốc Học Huế</div>
+    <h1 class="title">Kết nối hôm nay, đồng hành ngày mai</h1>
+    <p class="sub">Chỉ mất 2 phút để bạn có mặt trong danh sách Alumni — nơi bạn bè cũ tìm lại nhau.</p>
+    <div class="stamp">Biểu mẫu đăng ký thành viên</div>
+    <div class="hero-cta">
+      <a href="#form" class="btn btn-red">✍️ Đăng ký ngay</a>
+      <a href="#mission" class="btn btn-ghost">Vì sao nên tham gia?</a>
+    </div>
+  </header>
+
+  <!-- ================= MISSION ================= -->
+  <section id="mission">
+    <div class="sec-head"><span class="ico">🤝</span><h2>Alumni QH 03&ndash;06 cùng nhau</h2><span class="rule"></span></div>
+    <div class="mission-grid">
+      <div class="mission-card"><span class="mission-num">01</span><h3>Kết nối bạn bè suốt đời</h3><p>Tìm lại và giữ liên lạc với bạn học cùng khóa, dù ở bất cứ đâu.</p></div>
+      <div class="mission-card"><span class="mission-num">02</span><h3>Hỗ trợ sự nghiệp, kinh doanh</h3><p>Chia sẻ cơ hội việc làm, hợp tác kinh doanh giữa các thành viên.</p></div>
+      <div class="mission-card"><span class="mission-num">03</span><h3>Đồng hành cùng gia đình</h3><p>Hỗ trợ nhau trong những giai đoạn quan trọng của gia đình mỗi người.</p></div>
+      <div class="mission-card"><span class="mission-num">04</span><h3>Góp phần phát triển trường, xã hội</h3><p>Đóng góp trở lại cho Quốc Học Huế và cộng đồng nói chung.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= FORM ================= -->
+  <section id="form">
+    <div class="sec-head"><span class="ico">📝</span><h2>Đăng ký thông tin</h2><span class="rule"></span></div>
+
+    <div class="panel">
+      <div id="wizard">
+        <div class="form-header">
+          <h2>Bạn là ai trong Khóa Quốc Học 2003 - 2006?</h2>
+          <p>Thông tin chỉ dùng để Ban Liên lạc kết nối nội bộ khóa 03&ndash;06.</p>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+          <div class="progress-steps" id="progressSteps">
+            <span data-step="1">Cá nhân</span>
+            <span data-step="2">Liên hệ</span>
+            <span data-step="3">Nghề &amp; nơi ở</span>
+            <span data-step="4">Sở thích</span>
+            <span data-step="5">Xác nhận</span>
+          </div>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="step-panel active" data-panel="1">
+          <div class="field" id="f-hoTen">
+            <label>Họ và tên <span class="required-star">*</span></label>
+            <input type="text" id="in_hoTen" placeholder="VD: Nguyễn Văn A" autocomplete="name">
+            <div class="error-msg">Vui lòng nhập họ và tên.</div>
+          </div>
+          <div class="field" id="f-lop">
+            <label>Lớp (khóa 03&ndash;06) <span class="required-star">*</span> <span class="hint">— VD: 12A3, Toán 1, Anh 2...</span></label>
+            <input type="text" id="in_lop" placeholder="VD: 12A3">
+            <div class="error-msg">Vui lòng nhập tên lớp.</div>
+          </div>
+          <div class="step-nav">
+            <span class="spacer"></span>
+            <button class="btn btn-green" onclick="goStep(2)">Tiếp tục →</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step-panel" data-panel="2">
+          <div class="field" id="f-sdt">
+            <label>Số điện thoại / Zalo <span class="required-star">*</span></label>
+            <input type="tel" id="in_sdt" placeholder="VD: 0905 123 456" autocomplete="tel">
+            <div class="error-msg">Vui lòng nhập số điện thoại hợp lệ.</div>
+          </div>
+          <div class="field">
+            <label>Link Facebook cá nhân <span class="hint">(không bắt buộc)</span></label>
+            <input type="url" id="in_fb" placeholder="VD: facebook.com/ten.cua.ban">
+          </div>
+          <div class="step-nav">
+            <button class="btn btn-ghost" onclick="goStep(1)">← Quay lại</button>
+            <span class="spacer"></span>
+            <button class="btn btn-green" onclick="goStep(3)">Tiếp tục →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-panel" data-panel="3">
+          <div class="field" id="f-nganh">
+            <label>Ngành nghề hiện tại <span class="required-star">*</span> <span class="hint">— chọn nhóm chung, không cần ghi tên công ty</span></label>
+            <select id="in_nganh">
+              <option value="">— Chọn ngành nghề —</option>
+            </select>
+            <div class="error-msg">Vui lòng chọn ngành nghề.</div>
+          </div>
+          <div class="field" id="f-nganhKhac" style="display:none;">
+            <label>Ghi rõ ngành nghề khác</label>
+            <input type="text" id="in_nganhKhac" placeholder="VD: Nghệ nhân thủ công">
+          </div>
+          <div class="field" id="f-tinh">
+            <label>Tỉnh / Thành phố đang sinh sống <span class="required-star">*</span></label>
+            <select id="in_tinh">
+              <option value="">— Chọn tỉnh/thành —</option>
+            </select>
+            <div class="error-msg">Vui lòng chọn tỉnh/thành phố.</div>
+          </div>
+          <div class="field">
+            <label>Phường / Xã hoặc khu vực <span class="hint">(không bắt buộc, VD: Gò Vấp, Thuận Hóa...)</span></label>
+            <input type="text" id="in_khuVuc" placeholder="VD: Gò Vấp">
+          </div>
+          <div class="step-nav">
+            <button class="btn btn-ghost" onclick="goStep(2)">← Quay lại</button>
+            <span class="spacer"></span>
+            <button class="btn btn-green" onclick="goStep(4)">Tiếp tục →</button>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="step-panel" data-panel="4">
+          <div class="field">
+            <label>Sở thích <span class="hint">(chọn tất cả những gì phù hợp)</span></label>
+            <div class="chip-grid" id="chipGrid"></div>
+          </div>
+          <div class="field">
+            <label>Sở thích khác <span class="hint">(không bắt buộc)</span></label>
+            <input type="text" id="in_soThichKhac" placeholder="VD: Nuôi cá cảnh, chơi guitar...">
+          </div>
+          <div class="step-nav">
+            <button class="btn btn-ghost" onclick="goStep(3)">← Quay lại</button>
+            <span class="spacer"></span>
+            <button class="btn btn-green" onclick="goStep(5)">Tiếp tục →</button>
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="step-panel" data-panel="5">
+          <dl class="review-list" id="reviewList"></dl>
+          <div class="step-nav">
+            <button class="btn btn-ghost" onclick="goStep(4)">← Quay lại</button>
+            <span class="spacer"></span>
+            <button class="btn btn-red" id="submitBtn" onclick="submitForm()">✍️ Gửi thông tin</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div class="success-panel" id="successPanel">
+        <span class="fly">✈️</span>
+        <h3>Cảm ơn bạn đã tham gia!</h3>
+        <p>Thông tin của bạn đã được ghi nhận. Ban Liên lạc Alumni Quốc Học Huế 03&ndash;06 sẽ sớm kết nối với bạn.</p>
+        <div class="hero-cta" style="margin-top:24px;">
+          <a href="#" class="btn btn-green" onclick="location.reload();return false;">Gửi thêm một người bạn khác</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="ev">Hẹn nhau ngày về</div>
+    Ban Liên lạc Alumni Quốc Học Huế 2003 — 2006
+  </footer>
+</div>
+
+<!-- Hidden real form: submitted qua iframe ẩn (tránh lỗi CORS) -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+<form id="gform"
+      action="https://script.google.com/macros/s/AKfycbyQDNmAJEO3hJWYqeJ11mO5JcZDWVblw0J8gVV1TXKwCwXg1pb19p8ntAhIcLOBOFBl/exec"
+      method="POST"
+      target="hidden_iframe"
+      style="display:none;">
+  <input type="hidden" name="hoTen" id="p_hoTen">
+  <input type="hidden" name="lop" id="p_lop">
+  <input type="hidden" name="sdt" id="p_sdt">
+  <input type="hidden" name="facebook" id="p_facebook">
+  <input type="hidden" name="nganhNghe" id="p_nganhNghe">
+  <input type="hidden" name="tinhThanh" id="p_tinhThanh">
+  <input type="hidden" name="khuVuc" id="p_khuVuc">
+  <input type="hidden" name="soThich" id="p_soThich">
+</form>
+
+<script>
+/* ================= DATA ================= */
+const NGANH_NGHE = [
+  "Giáo dục – Giảng dạy","Y tế – Sức khỏe","Kỹ thuật – Công nghệ thông tin",
+  "Kinh doanh – Thương mại","Tài chính – Ngân hàng – Kế toán","Nhà nước – Công chức",
+  "Luật – Pháp lý","Truyền thông – Nghệ thuật – Sáng tạo","Xây dựng – Kiến trúc",
+  "Nông – Lâm – Ngư nghiệp","Dịch vụ – Du lịch – Nhà hàng khách sạn",
+  "Đang học / Nghiên cứu sinh","Nội trợ / Tự do","Khác"
+];
+
+const TINH_THANH = [
+  "An Giang","Bắc Ninh","Cà Mau","Cao Bằng","Cần Thơ","Đà Nẵng","Đắk Lắk","Điện Biên",
+  "Đồng Nai","Đồng Tháp","Gia Lai","Hà Nội","Hà Tĩnh","Hải Phòng","Hưng Yên","Khánh Hòa",
+  "Lai Châu","Lâm Đồng","Lạng Sơn","Lào Cai","Nghệ An","Ninh Bình","Phú Thọ","Quảng Ngãi",
+  "Quảng Ninh","Quảng Trị","Sơn La","Tây Ninh","Thái Nguyên","Thanh Hóa",
+  "TP. Hồ Chí Minh","Huế","Tuyên Quang","Vĩnh Long","Nước ngoài"
+];
+
+const SO_THICH = [
+  "Bóng đá","Pickleball","Cầu lông","Bóng bàn","Gym / Chạy bộ","Golf",
+  "Ca hát / Văn nghệ","Nhậu / Giao lưu bạn bè","Du lịch","Đọc sách",
+  "Nhiếp ảnh","Cờ tướng / Cờ vua","Thiện nguyện / Cộng đồng"
+];
+
+let selectedSoThich = new Set();
+
+/* ================= INIT SELECTS & CHIPS ================= */
+function fillSelect(id, arr){
+  const sel = document.getElementById(id);
+  arr.forEach(v=>{
+    const opt = document.createElement('option');
+    opt.value = v; opt.textContent = v;
+    sel.appendChild(opt);
+  });
+}
+fillSelect('in_nganh', NGANH_NGHE);
+fillSelect('in_tinh', TINH_THANH);
+
+const chipGrid = document.getElementById('chipGrid');
+SO_THICH.forEach(label=>{
+  const chip = document.createElement('button');
+  chip.type='button';
+  chip.className='chip';
+  chip.textContent=label;
+  chip.onclick=()=>{
+    if(selectedSoThich.has(label)){selectedSoThich.delete(label);chip.classList.remove('selected');}
+    else{selectedSoThich.add(label);chip.classList.add('selected');}
+  };
+  chipGrid.appendChild(chip);
+});
+
+document.getElementById('in_nganh').addEventListener('change', function(){
+  document.getElementById('f-nganhKhac').style.display = this.value === 'Khác' ? 'block' : 'none';
+});
+
+/* ================= WIZARD NAVIGATION ================= */
+let currentStep = 1;
+const totalSteps = 5;
+
+function setError(fieldId, show){
+  const el = document.getElementById(fieldId);
+  if(!el) return;
+  el.classList.toggle('invalid', show);
+}
+
+function validateStep(step){
+  let ok = true;
+  if(step===1){
+    const hoTen = document.getElementById('in_hoTen').value.trim();
+    const lop = document.getElementById('in_lop').value.trim();
+    setError('f-hoTen', !hoTen); if(!hoTen) ok=false;
+    setError('f-lop', !lop); if(!lop) ok=false;
+  }
+  if(step===2){
+    const sdt = document.getElementById('in_sdt').value.trim();
+    const validPhone = /^[0-9+\s.()-]{8,15}$/.test(sdt);
+    setError('f-sdt', !validPhone); if(!validPhone) ok=false;
+  }
+  if(step===3){
+    const nganh = document.getElementById('in_nganh').value;
+    const tinh = document.getElementById('in_tinh').value;
+    setError('f-nganh', !nganh); if(!nganh) ok=false;
+    setError('f-tinh', !tinh); if(!tinh) ok=false;
+  }
+  return ok;
+}
+
+function goStep(step){
+  if(step > currentStep && !validateStep(currentStep)) return;
+  document.querySelectorAll('.step-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelector('.step-panel[data-panel="'+step+'"]').classList.add('active');
+  currentStep = step;
+  updateProgress();
+  if(step===5) buildReview();
+  document.getElementById('form').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function updateProgress(){
+  document.getElementById('progressFill').style.width = (currentStep/totalSteps*100)+'%';
+  document.querySelectorAll('#progressSteps span').forEach(s=>{
+    const n = parseInt(s.dataset.step);
+    s.classList.toggle('active', n===currentStep);
+    s.classList.toggle('done', n<currentStep);
+  });
+}
+
+function buildReview(){
+  const nganh = document.getElementById('in_nganh').value === 'Khác'
+    ? (document.getElementById('in_nganhKhac').value.trim() || 'Khác')
+    : document.getElementById('in_nganh').value;
+  let soThich = Array.from(selectedSoThich).join(', ');
+  const soThichKhac = document.getElementById('in_soThichKhac').value.trim();
+  if(soThichKhac) soThich = soThich ? soThich+', '+soThichKhac : soThichKhac;
+
+  const data = [
+    ['Họ và tên', document.getElementById('in_hoTen').value.trim()],
+    ['Lớp', document.getElementById('in_lop').value.trim()],
+    ['SĐT / Zalo', document.getElementById('in_sdt').value.trim()],
+    ['Facebook', document.getElementById('in_fb').value.trim() || '—'],
+    ['Ngành nghề', nganh || '—'],
+    ['Tỉnh/Thành phố', document.getElementById('in_tinh').value || '—'],
+    ['Khu vực', document.getElementById('in_khuVuc').value.trim() || '—'],
+    ['Sở thích', soThich || '—'],
+  ];
+  const list = document.getElementById('reviewList');
+  list.innerHTML = data.map(([k,v])=>`<div class="review-row"><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+}
+
+/* ================= SUBMIT ================= */
+let submitted = false;
+
+function submitForm(){
+  if(!validateStep(1) || !validateStep(2) || !validateStep(3)){
+    alert('Vui lòng kiểm tra lại các bước trước — còn thiếu thông tin bắt buộc.');
+    return;
+  }
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Đang gửi...';
+
+  const nganh = document.getElementById('in_nganh').value === 'Khác'
+    ? (document.getElementById('in_nganhKhac').value.trim() || 'Khác')
+    : document.getElementById('in_nganh').value;
+  let soThich = Array.from(selectedSoThich).join(', ');
+  const soThichKhac = document.getElementById('in_soThichKhac').value.trim();
+  if(soThichKhac) soThich = soThich ? soThich+', '+soThichKhac : soThichKhac;
+
+  document.getElementById('p_hoTen').value = document.getElementById('in_hoTen').value.trim();
+  document.getElementById('p_lop').value = document.getElementById('in_lop').value.trim();
+  document.getElementById('p_sdt').value = document.getElementById('in_sdt').value.trim();
+  document.getElementById('p_facebook').value = document.getElementById('in_fb').value.trim();
+  document.getElementById('p_nganhNghe').value = nganh;
+  document.getElementById('p_tinhThanh').value = document.getElementById('in_tinh').value;
+  document.getElementById('p_khuVuc').value = document.getElementById('in_khuVuc').value.trim();
+  document.getElementById('p_soThich').value = soThich;
+
+  submitted = true;
+  document.getElementById('gform').submit();
+
+  // Fallback: nếu vì lý do nào đó iframe không load sự kiện, vẫn hiện thành công sau 1.6s
+  setTimeout(formSubmitted, 1600);
+}
+
+let alreadyShown = false;
+function formSubmitted(){
+  if(alreadyShown) return;
+  alreadyShown = true;
+  document.getElementById('wizard').style.display = 'none';
+  const panel = document.getElementById('successPanel');
+  panel.classList.add('active');
+}
+
+document.getElementById('hidden_iframe').addEventListener('load', function(){
+  if(submitted) formSubmitted();
+});
+
+/* ================= SCROLL REVEAL (mission cards) ================= */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in-view'); });
+},{threshold:0.2});
+document.querySelectorAll('.mission-card').forEach((el,i)=>{
+  el.style.transitionDelay = (i*0.08)+'s';
+  io.observe(el);
+});
+</script>
+</body>
+</html>
