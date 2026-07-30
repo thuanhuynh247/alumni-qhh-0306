@@ -26,7 +26,7 @@ body{
 }
 img{max-width:100%;display:block}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
-input,select{font-family:inherit}
+input,select,textarea{font-family:inherit}
 a{color:inherit}
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
@@ -187,7 +187,7 @@ footer .ev{font-family:'Playfair Display',serif;font-style:italic;color:var(--go
   <!-- ================= HEADER ================= -->
   <header class="hero">
     <div class="badge-plate">QH<br>03–06</div>
-    <div class="kicker">Khóa Cựu học sinh Quốc Học Huế 2003 — 2006 <span class="d">
+    <div class="kicker">Khóa Cựu học sinh Quốc Học Huế 2003 — 2006 <span class="d">◆</span></div>
     <h1 class="title">Kết nối hôm nay, đồng hành ngày mai</h1>
     <p class="sub">Chỉ mất 2 phút để bạn có mặt trong danh sách Alumni — nơi bạn bè cũ tìm lại nhau.</p>
     <div class="stamp">Biểu mẫu đăng ký thành viên</div>
@@ -275,9 +275,10 @@ footer .ev{font-family:'Playfair Display',serif;font-style:italic;color:var(--go
             </select>
             <div class="error-msg">Vui lòng chọn ngành nghề.</div>
           </div>
-          <div class="field" id="f-nganhKhac" style="display:none;">
-            <label>Ghi rõ ngành nghề khác</label>
-            <input type="text" id="in_nganhKhac" placeholder="VD: Nghệ nhân thủ công">
+          <div class="field" id="f-chiTiet">
+            <label>Mô tả cụ thể hơn <span class="hint">(không bắt buộc, nhưng giúp bạn bè dễ nhận ra nhau hơn)</span></label>
+            <input type="text" id="in_chiTiet" placeholder="Chọn ngành nghề ở trên trước...">
+            <div class="hint" id="chiTietHelp" style="margin-top:6px;"></div>
           </div>
           <div class="field" id="f-tinh">
             <label>Tỉnh / Thành phố đang sinh sống <span class="required-star">*</span></label>
@@ -346,7 +347,7 @@ footer .ev{font-family:'Playfair Display',serif;font-style:italic;color:var(--go
 <!-- Hidden real form: submitted qua iframe ẩn (tránh lỗi CORS) -->
 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 <form id="gform"
-      action="https://script.google.com/macros/s/AKfycbyQDNmAJEO3hJWYqeJ11mO5JcZDWVblw0J8gVV1TXKwCwXg1pb19p8ntAhIcLOBOFBl/exec"
+      action="https://script.google.com/macros/s/AKfycbwpiGgVkmhGZcRJns7DyI2WUYHNvLtm7NACsSQlF_d2R9PjdbXiUSLZ7WoHnwiFgAeE/exec"
       method="POST"
       target="hidden_iframe"
       style="display:none;">
@@ -355,6 +356,7 @@ footer .ev{font-family:'Playfair Display',serif;font-style:italic;color:var(--go
   <input type="hidden" name="sdt" id="p_sdt">
   <input type="hidden" name="facebook" id="p_facebook">
   <input type="hidden" name="nganhNghe" id="p_nganhNghe">
+  <input type="hidden" name="chiTiet" id="p_chiTiet">
   <input type="hidden" name="tinhThanh" id="p_tinhThanh">
   <input type="hidden" name="khuVuc" id="p_khuVuc">
   <input type="hidden" name="soThich" id="p_soThich">
@@ -369,6 +371,24 @@ const NGANH_NGHE = [
   "Nông – Lâm – Ngư nghiệp","Dịch vụ – Du lịch – Nhà hàng khách sạn",
   "Đang học / Nghiên cứu sinh","Nội trợ / Tự do","Khác"
 ];
+
+/* Gợi ý mô tả chi tiết theo từng ngành nghề — hiện ra làm placeholder cho ô "Mô tả cụ thể hơn" */
+const CHI_TIET_GOI_Y = {
+  "Giáo dục – Giảng dạy": "VD: Giáo viên Toán cấp 3, Giảng viên Đại học ngành Kinh tế, Giáo viên Tiểu học...",
+  "Y tế – Sức khỏe": "VD: Bác sĩ Tai Mũi Họng, Bác sĩ Nha khoa, Điều dưỡng, Dược sĩ...",
+  "Kỹ thuật – Công nghệ thông tin": "VD: Kỹ sư Cơ khí, Kỹ sư Xây dựng, Kỹ sư Điện, Kỹ sư Hóa, Lập trình viên...",
+  "Kinh doanh – Thương mại": "VD: Chủ cửa hàng, Xuất nhập khẩu, Bán lẻ, Sales B2B...",
+  "Tài chính – Ngân hàng – Kế toán": "VD: Kế toán trưởng, Chuyên viên tín dụng, Kiểm toán viên...",
+  "Nhà nước – Công chức": "VD: Chuyên viên Sở Tài chính, Cán bộ phường/xã, Công an...",
+  "Luật – Pháp lý": "VD: Luật sư tranh tụng, Chuyên viên pháp chế doanh nghiệp...",
+  "Truyền thông – Nghệ thuật – Sáng tạo": "VD: Biên tập viên, Nhiếp ảnh gia, Nhạc sĩ, Thiết kế đồ họa...",
+  "Xây dựng – Kiến trúc": "VD: Kiến trúc sư, Kỹ sư giám sát công trình, Quy hoạch đô thị...",
+  "Nông – Lâm – Ngư nghiệp": "VD: Chủ trang trại, Nuôi trồng thủy sản, Kỹ sư nông nghiệp...",
+  "Dịch vụ – Du lịch – Nhà hàng khách sạn": "VD: Quản lý khách sạn, Đầu bếp, Hướng dẫn viên du lịch...",
+  "Đang học / Nghiên cứu sinh": "VD: NCS Tiến sĩ ngành Y, Học viên Thạc sĩ Quản trị kinh doanh...",
+  "Nội trợ / Tự do": "VD: Freelancer thiết kế, Nội trợ toàn thời gian...",
+  "Khác": "Mô tả ngắn gọn công việc của bạn..."
+};
 
 const TINH_THANH = [
   "An Giang","Bắc Ninh","Cà Mau","Cao Bằng","Cần Thơ","Đà Nẵng","Đắk Lắk","Điện Biên",
@@ -411,8 +431,12 @@ SO_THICH.forEach(label=>{
   chipGrid.appendChild(chip);
 });
 
+/* Khi đổi ngành nghề, cập nhật gợi ý mô tả chi tiết tương ứng */
 document.getElementById('in_nganh').addEventListener('change', function(){
-  document.getElementById('f-nganhKhac').style.display = this.value === 'Khác' ? 'block' : 'none';
+  const goiY = CHI_TIET_GOI_Y[this.value] || "Chọn ngành nghề ở trên trước...";
+  const inChiTiet = document.getElementById('in_chiTiet');
+  inChiTiet.placeholder = goiY;
+  document.getElementById('chiTietHelp').textContent = this.value ? goiY : '';
 });
 
 /* ================= WIZARD NAVIGATION ================= */
@@ -467,9 +491,8 @@ function updateProgress(){
 }
 
 function buildReview(){
-  const nganh = document.getElementById('in_nganh').value === 'Khác'
-    ? (document.getElementById('in_nganhKhac').value.trim() || 'Khác')
-    : document.getElementById('in_nganh').value;
+  const nganh = document.getElementById('in_nganh').value;
+  const chiTiet = document.getElementById('in_chiTiet').value.trim();
   let soThich = Array.from(selectedSoThich).join(', ');
   const soThichKhac = document.getElementById('in_soThichKhac').value.trim();
   if(soThichKhac) soThich = soThich ? soThich+', '+soThichKhac : soThichKhac;
@@ -480,6 +503,7 @@ function buildReview(){
     ['SĐT / Zalo', document.getElementById('in_sdt').value.trim()],
     ['Facebook', document.getElementById('in_fb').value.trim() || '—'],
     ['Ngành nghề', nganh || '—'],
+    ['Mô tả cụ thể', chiTiet || '—'],
     ['Tỉnh/Thành phố', document.getElementById('in_tinh').value || '—'],
     ['Khu vực', document.getElementById('in_khuVuc').value.trim() || '—'],
     ['Sở thích', soThich || '—'],
@@ -500,9 +524,6 @@ function submitForm(){
   btn.disabled = true;
   btn.textContent = 'Đang gửi...';
 
-  const nganh = document.getElementById('in_nganh').value === 'Khác'
-    ? (document.getElementById('in_nganhKhac').value.trim() || 'Khác')
-    : document.getElementById('in_nganh').value;
   let soThich = Array.from(selectedSoThich).join(', ');
   const soThichKhac = document.getElementById('in_soThichKhac').value.trim();
   if(soThichKhac) soThich = soThich ? soThich+', '+soThichKhac : soThichKhac;
@@ -511,7 +532,8 @@ function submitForm(){
   document.getElementById('p_lop').value = document.getElementById('in_lop').value.trim();
   document.getElementById('p_sdt').value = document.getElementById('in_sdt').value.trim();
   document.getElementById('p_facebook').value = document.getElementById('in_fb').value.trim();
-  document.getElementById('p_nganhNghe').value = nganh;
+  document.getElementById('p_nganhNghe').value = document.getElementById('in_nganh').value;
+  document.getElementById('p_chiTiet').value = document.getElementById('in_chiTiet').value.trim();
   document.getElementById('p_tinhThanh').value = document.getElementById('in_tinh').value;
   document.getElementById('p_khuVuc').value = document.getElementById('in_khuVuc').value.trim();
   document.getElementById('p_soThich').value = soThich;
